@@ -7,6 +7,7 @@ import hljsVuePlugin from '@highlightjs/vue-plugin'
 import './style.css'
 import 'scss-flex'
 import App from './App.vue'
+import '@/utils/log'
 const app = createApp(App)
 for(const [key,component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key,component)

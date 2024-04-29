@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import {cssDemoRouters,cssDaysRouters,cssToolsRouters} from './css-demo/index'
+import AuthEventEmitter from "@/utils/AuthEventEmitter";
 let routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -41,5 +42,10 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: routes,
 });
-
+router.beforeEach((to,from,next)=>{
+    if(to.meta.title == 'login'){
+        AuthEventEmitter.emit('API:UN_AUTH')
+    }
+    next()
+})
 export default router;
